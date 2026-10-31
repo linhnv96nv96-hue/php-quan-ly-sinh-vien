@@ -70,9 +70,14 @@ $danhSach = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <br>
 
-    <!-- THÊM SINH VIÊN -->
     <a href="them.php">+ Thêm sinh viên</a>
 
+    <?php if ($_SESSION["role"] === "admin"): ?>
+        |
+        <a href="quan_ly_tai_khoan.php">Quản lý tài khoản</a>
+        |
+        <a href="quan_ly_lop.php">Quản lý lớp học</a>
+    <?php endif; ?>
     <br><br>
 
     <!-- BẢNG DANH SÁCH SINH VIÊN -->
@@ -127,23 +132,27 @@ $danhSach = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                         |
 
-                        <!-- XÓA SINH VIÊN -->
-                        <form
-                            action="xoa.php"
-                            method="POST"
-                            style="display:inline;"
-                            onsubmit="return confirm('Bạn có chắc chắn muốn xóa sinh viên này?');">
+                        <!-- XÓA SINH VIÊN: CHỈ ADMIN -->
+                        <?php if ($_SESSION["role"] === "admin"): ?>
 
-                            <input
-                                type="hidden"
-                                name="id"
-                                value="<?= $sv['id'] ?>">
+                            <form
+                                action="xoa.php"
+                                method="POST"
+                                style="display:inline;"
+                                onsubmit="return confirm('Bạn có chắc chắn muốn xóa sinh viên này?');">
 
-                            <button type="submit">
-                                Xóa
-                            </button>
+                                <input
+                                    type="hidden"
+                                    name="id"
+                                    value="<?= $sv['id'] ?>">
 
-                        </form>
+                                <button type="submit">
+                                    Xóa
+                                </button>
+
+                            </form>
+
+                        <?php endif; ?>
 
                     </td>
 

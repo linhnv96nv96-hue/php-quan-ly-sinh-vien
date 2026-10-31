@@ -1,4 +1,5 @@
 <?php
+require_once "auth.php";
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -39,9 +40,19 @@ $danhSach = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-
     <h2>DANH SÁCH SINH VIÊN</h2>
 
+    <p>
+        Xin chào,
+        <strong>
+            <?= htmlspecialchars($_SESSION["ho_ten"]) ?>
+        </strong>
+        |
+        <a href="logout.php"
+            onclick="return confirm('Bạn có chắc muốn đăng xuất không?');">
+            Đăng xuất
+        </a>
+    </p>
     <!-- TÌM KIẾM SINH VIÊN -->
     <form method="GET" action="index.php">
 

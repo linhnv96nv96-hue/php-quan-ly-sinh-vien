@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <head>
     <meta charset="UTF-8">
-    <title>Đăng nhập - Quản lý sinh viên</title>
+    <title>Đăng nhập - Quản lý sinh viên Cuoi nam</title>
     <style>
         body {
             font-family: Arial, sans-serif;
